@@ -1,0 +1,37 @@
+<%- include("partials/header.ejs")%>
+    <div class="posts">
+
+        <% if(locals.dataArray.length>0) {%>
+            <% dataArray.forEach(element=> {%>
+                <div class="singleposts">
+                <h3>
+                    <%= element.name %>
+                </h3>
+                <p>
+                    <%= element.date %>
+                </p>
+                <p>
+                    <%= element.personnummer %>
+                </p>
+                <form action="/post" method="POST">
+                    <button type="submit" value="<%= element.id %>" name="choice">Delete</button>
+                </form>
+                
+    </div>
+
+    <% }); %>
+
+        <% }else{ %>
+            <div class="singleposts">
+                <h2 style="color: red;">
+                    <%=nodata %>
+                </h2>
+            </div>
+
+            <% } %>
+
+
+
+
+            
+                <%- include("partials/footer.ejs")%>
