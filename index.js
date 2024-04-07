@@ -34,7 +34,7 @@ app.post("/post", (req, res) => {
         date: todaymoment,
         personnummer: req.body.arrayDataPersonalNR,
       });
-      console.log(data1);
+      
       res.redirect("/posts");
       break;
     case req.body.choice:
