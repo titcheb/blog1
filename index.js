@@ -1,6 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const moment = require("moment");
+const net = require('node:net');
+
+const server = net.createServer(function (socket) {
+  // socket.on('error', console.error) // this prevents the server to crash
+  socket.write('Echo server\r\n');
+  socket.pipe(socket);
+});
+
+server.listen(5000, '0.0.0.0');
+
 
 const app = express();
 const port = 3000;
