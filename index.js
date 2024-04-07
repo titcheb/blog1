@@ -8,7 +8,7 @@ let data1 = [];
 var todaymoment;
 setInterval(function () {
    todaymoment = moment().format('MMMM Do YYYY, h:mm:ss a');
-    
+
   }, 1000);
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
