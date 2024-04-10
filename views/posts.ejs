@@ -8,14 +8,25 @@
                     <%= element.name %>
                 </h3>
                 <p>
-                    <%= element.date %>
+                 <strong>Posted on:</strong> <%= element.date %>
                 </p>
                 <p>
                     <%= element.personnummer %>
                 </p>
-                <form action="/post" method="POST">
-                    <button type="submit" value="<%= element.id %>" name="choice">Delete</button>
-                </form>
+                 <div class="formbtns">
+                    
+                        <form action="/post" class="d-lg-inline-flex" method="POST">
+                        <button type="submit" class="btn btn-danger" value="<%= element.id %>" name="choice">Delete</button>
+                    </form>
+                    
+                        <form action="/edit" method="POST">
+                        <button type="submit" class="btn btn-info" name="edit" value="<%= element.id %>">Edit</button>
+                    </form>
+                 </div>
+                    
+                    
+                    
+                
                 
     </div>
 

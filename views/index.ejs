@@ -1,22 +1,25 @@
 <%- include("partials/header.ejs")%>
-<div class="container7"><div class="contact-form">
+<div class="container7">
+    <% if(loginstatus){ %>
+    <div class="contact-form">
     <div class="contact-image">
         <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
     </div>
+    
     <form method="post" action="/post">
         <h3>Post an Article</h3>
        <div class="row">
             <div class="col-md-12 mb-3">
                 <div class="form-group">
-                    <input type="text" name="arrayDataName" class="form-control" placeholder="Article Title" value="" />
+                    <input type="text" name="arrayDataName" required class="form-control" placeholder="Article Title" value="" />
              </div>
                 <div class="col-md-12 mb-3">
                   <div class="form-group">
-                      <textarea name="arrayDataPersonalNR" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                      <textarea name="arrayDataPersonalNR" required class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
                   </div>
               </div>
                 <div class="form-group">
-                    <input type="submit" class="btnContact" name="choice" value="post" />
+                    <input type="submit" class="btn btn-success" name="choice" value="Post" />
                 </div>
             </div>
             
@@ -24,7 +27,15 @@
     </form>
     
     
-</div></div>
+</div>
+<% }else{ %>
+    <div class="singleposts">
+        <h2 style="color: red;">
+            <%=loginmessage %>
+        </h2>
+    </div>
+    <% } %>
+</div>
 
 
 <%- include("partials/footer.ejs")%>
