@@ -135,9 +135,9 @@ app.post("/post", (req, res) => {
     case "Back":
       res.redirect("/posts");
       break;
-    case "Login1":
+    case "Login":
       
-      loginbtnvalue1 = "Logout";
+      
       res.redirect("/");
       break;
     case "Logout":

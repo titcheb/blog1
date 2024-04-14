@@ -37,8 +37,8 @@
           </form>
           <form action="/post" method="post">
             <div class="text-end">
-              <% if(locals.loginbtnvalue){ %>
-                <input type="submit" class="btn btn-outline-light me-2" name="login" value="<%=loginbtnvalue %>">
+              <% if(!locals.loginstatus){ %>
+                <input type="submit" class="btn btn-outline-light me-2" name="login" value="Login">
                 <% }else{ %>
                   <input type="submit" class="btn btn-outline-light me-2" name="login" value="Logout">
                   <% } %>
