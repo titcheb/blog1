@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const moment = require("moment");
 const path = require("path");
 const { name } = require("ejs");
+const { setInterval } = require("timers/promises");
 
 const app = express();
 const port = 3000;
@@ -35,9 +36,35 @@ app.get("/", (req, res) => {
     res.redirect("login");
   }
 });
+let username="astrit";
+let password="123456"
+let loginfailed="";
+app.post("/login",(req,res)=>{
+  if(username===req.body.username&&password===req.body.password){
+    loginfailed="Logged in successfully!"
+    loginbtnvalue1 = "Logout";
+    loginCheck=true;
+    
+    
+   }
+   else{
+    if(req.body.username!==""){
+      loginfailed="Login Failed check your username/password!";
+      
+    }
+    
+   }
+   
+      console.log(loginfailed)
+    res.redirect("/")
+    
+   
+})
 app.get("/login", (req, res) => {
-  res.render("login", { loginbtnvalue: loginbtnvalue1 });
+  
+  res.render("login", { loginbtnvalue: loginbtnvalue1,loginstatus:loginCheck,loginFailed:loginfailed });
 });
+
 function removeFromArrayOfHash(p_array_of_hash, p_key, p_value_to_remove) {
   return p_array_of_hash.filter((l_cur_row) => {
     return l_cur_row[p_key] != p_value_to_remove;
@@ -62,6 +89,7 @@ app.get("/edit", (req, res) => {
       name: editData.name,
       message: editData.message,
       id: editData.id,
+      loginstatus:loginCheck
     });
   } else {
     res.redirect("/");
@@ -107,15 +135,16 @@ app.post("/post", (req, res) => {
     case "Back":
       res.redirect("/posts");
       break;
-    case "Login":
-      loginCheck = true;
+    case "Login1":
+      
       loginbtnvalue1 = "Logout";
       res.redirect("/");
       break;
     case "Logout":
       loginCheck = false;
+      loginfailed="";
       res.redirect("/");
-      
+
       break;
     default:
       break;
@@ -131,6 +160,7 @@ app.get("/posts", (req, res) => {
     dataArray: data,
     nodata: noData,
     loginbtnvalue: loginbtnvalue1,
+    loginstatus:loginCheck
   });
 });
 

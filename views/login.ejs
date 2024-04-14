@@ -8,24 +8,28 @@
                     <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
                 </div>
                 
-                <form method="post" action="/post">
+                <form method="post" action="/login">
                     <h3>Login/Sign Up</h3>
                    <div class="row">
                         <div class="col-md-12 mb-3">
                             <div class="form-group">
                               
-                              <label for="arrayDataName"><h6>Username:</h6></label> <input type="text" name="arrayDataName" class="form-control" placeholder="Username" required value="" />
+                              <label for="arrayDataName"><h6>Username:</h6></label> <input type="text" name="username" id="username" class="form-control" placeholder="Username" required value="" />
                          </div>
                             <div class="col-md-12 mb-3">
                               <div class="form-group">
-                                <label for="arrayDataPersonalNR"><h6>Password</h6></label>  <input type="password" name="arrayDataPersonalNR" class="form-control" placeholder="Password" required></input>
+                                <label for="arrayDataPersonalNR"><h6>Password</h6></label>  <input type="password" name="password" id="password" class="form-control" placeholder="Password" required></input>
                               </div>
                           </div>
                             <div class="form-group">
-                                <div class="formbtns"><input type="submit" class="btn btn-success" name="login" value="Login" />
-                                <input type="submit" class="btn btn-dark" name="edit" value="Sign Up" /></div>
+                                <div class="formbtns"><input type="submit" id="button1" class="btn btn-success" name="login1" value="Login" />
+                                <input type="submit" class="btn btn-dark" name="edit"  value="Sign Up" /></div>
                                 
                             </div>
+                            
+                            
+                            
+                             
                         </div>
                         
                     </div>
@@ -36,6 +40,4 @@
             
 </div>
 
-
-
-<%- include("partials/footer.ejs")%>
+<%include("partials/footer.ejs")%>
