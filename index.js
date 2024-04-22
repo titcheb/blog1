@@ -1,18 +1,18 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const moment = require("moment");
+var moment = require('moment'); // require
+moment().format("MMMM Do YYYY, h:mm:ss a"); 
 const path = require("path");
 const { name } = require("ejs");
 const { setInterval } = require("timers/promises");
+const { time } = require("console");
 
 const app = express();
 const port = 3000;
 let data1 = [];
-var todaymoment;
+
 let loginMsg = "You need to login to post articles";
-setInterval(function () {
-  todaymoment = moment().format("MMMM Do YYYY, h:mm:ss a");
-}, 1000);
+
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -26,10 +26,12 @@ app.get("/", (req, res) => {
   };
   if (loginCheck != false) {
     loginbtnvalue1 = "Logout";
+   
     res.render("index.ejs", {
       loginstatus: loginData.logincheck,
       loginmessage: loginData.loginmessage,
       loginbtnvalue: loginData.loginbtnvalue,
+      
     });
   } else {
     loginbtnvalue1 = "Login";
@@ -61,6 +63,7 @@ app.post("/login",(req,res)=>{
    
 })
 app.get("/login", (req, res) => {
+ 
   
   res.render("login", { loginbtnvalue: loginbtnvalue1,loginstatus:loginCheck,loginFailed:loginfailed });
 });
@@ -109,7 +112,7 @@ app.post("/post", (req, res) => {
       data1.push({
         id: data1.length + 1,
         name: req.body.arrayDataName,
-        date: todaymoment,
+        date: moment().format("dddd, MMMM Do YYYY, h:mm:ss a"),
         personnummer: req.body.arrayDataPersonalNR,
       });
 
@@ -127,7 +130,7 @@ app.post("/post", (req, res) => {
       data1.splice(idedit - 1, 1, {
         id: idedit,
         name: req.body.arrayDataName,
-        date: todaymoment,
+        date: moment().format("dddd, MMMM Do YYYY, h:mm:ss a"),
         personnummer: req.body.arrayDataPersonalNR,
       });
       res.redirect("/posts");
